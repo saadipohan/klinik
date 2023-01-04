@@ -51,7 +51,6 @@
                       <th>Usia</th>
                       <th>Jenis Kelamin</th>
                       <th>Alamat</th>
-                      <th>No. Hp</th>
                       <th>Tindakan</th>
                     </tr>
                   </thead>
@@ -62,7 +61,6 @@
                       <th>Usia</th>
                       <th>Jenis Kelamin</th>
                       <th>Alamat</th>
-                      <th>No. Hp</th>
                       <th>Tindakan</th>
                     </tr>
                   </tfoot>
@@ -74,7 +72,6 @@
                       <td>{{ hitung_usia($pasien->tgl_lhr) }}</td>
                       <td>{{ $pasien->jk }}</td>
                       <td class="text-truncate" style="max-width: 150px;">{{ $pasien->alamat }}</td>
-                      <td>{{ $pasien->hp }}</td>
                       <td>
                         <a href ="{{route('rm.list', $pasien->id) }}" title="Buka RM" class="btn btn-circle btn-primary">
                             <i class="fas fa-file"></i>

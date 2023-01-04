@@ -23,7 +23,6 @@
                     <tr>
                       <th>No RM</th>
                       <th>Nama Lengkap</th>
-                      <th>No. Hp</th>
                       <th>Tindakan</th>
                     </tr>
                   </thead>
@@ -31,7 +30,6 @@
                     <tr>
                       <th>No RM</th>
                       <th>Nama Lengkap</th>
-                      <th>No. Hp</th>
                       <th>Tindakan</th>
                     </tr>
                   </tfoot>
@@ -40,7 +38,6 @@
                     <tr>
                       <td>{{str_pad($pasien->id, 4, '0', STR_PAD_LEFT)  }}</td>
                       <td>{{ $pasien->nama }}</td>
-                      <td>{{ $pasien->hp }}</td>
                       <td width="120px">
                         <a href="{{route('rm.tambah.id',$pasien->id)}}" class="btn btn-primary btn-sm btn-icon-split">
                         <span class="icon text-white-50">
@@ -88,7 +85,7 @@
                               </div>
                             </div>
                         
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="no_bpjs">No. BPJS</label>
                                 <input type="text" class="form-control " name="no_bpjs" value="{{$iden->no_bpjs}}" readonly>
@@ -97,7 +94,7 @@
                             <label for="no_handphone">No. Handphone</label>
                             <input type="text" class="form-control " name="no_handphone"  value="{{$iden->hp}}" readonly>
                           </div>
-                        </div>
+                        </div> -->
                     </form>
                     @endforeach
                 

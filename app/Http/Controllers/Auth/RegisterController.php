@@ -77,14 +77,22 @@ class RegisterController extends Controller
             $data['namaavatar'] = $avatarname;
         }
         else { $data['namaavatar']= "default.jpg";}
-            
+        
+        if ($data['profesi'] == 'Staff') {
+            $admin = 2;
+        }elseif ($data['profesi'] == 'Administrasi') {
+            $admin = 3;
+        }
+        else{
+            $admin = $data['admin'];
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'username' => $data['username'],
             'profesi' => $data['profesi'],
-            'admin' => $data['admin'],
+            'admin' => $admin,
             'avatar' => $data['namaavatar'],
         ]);
     }

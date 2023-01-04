@@ -80,6 +80,8 @@
                                     <option value="" selected>Pilih Profesi</option>
                                     <option value="Dokter" >Dokter</option>
                                     <option value="Staff">Staff</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Administrasi">Administrasi</option>
                                     @error('profesi')
                                     <span class="invalid-feedback" role="alert"
                                     <strong>{{ $message }}</strong>

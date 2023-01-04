@@ -9,38 +9,39 @@
   <title>@yield('judul_halaman')</title>
   <!-- Custom fonts for this template-->
 
-  <link href= "{{ URL::asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ URL::asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  
+
   <!-- Custom styles for this template-->
   <link href="{{ URL::asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-  
-   <!-- Bootstrap core JavaScript-->
-  <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script> 
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
   <script src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ URL::asset('/js/printThis.js') }}"></script>
   <!-- Core plugin JavaScript-->
   <script src="{{ URL::asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    
+
   <script src="{{ URL::asset('js/fontawesome-iconpicker.js') }}"></script>
-  <link href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
+
 <body id="page-top">
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-     <!-- Sidebar -->
+    <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
         <div class="sidebar-brand-icon {{(get_setting('gambarbool') !== 1) ? 'rotate-n-15' :''}}">
-        @if (get_setting('gambarbool') === 1)
-            <img src ="{{URL::asset('storage/storage/logo/'. get_setting('gambar'))}}" width=50px>
-        @else
-            <i class="fas {{get_setting('logo')}}"></i>
-        @endif
-          
+          @if (get_setting('gambarbool') === 1)
+          <img src="{{URL::asset('storage/storage/logo/'. get_setting('gambar'))}}" width=50px>
+          @else
+          <i class="fas {{get_setting('logo')}}"></i>
+          @endif
+
         </div>
         <div class="sidebar-brand-text mx-3">{{get_setting('n_Klinik')}}</div>
       </a>
@@ -69,7 +70,7 @@
           <span>Pasien</span>
         </a>
         <div id="collapseTwo" class="collapse {{ set_show(['pasien', 'pasien.tambah', 'pasien.edit']) }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">            
+          <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item {{ set_menu('pasien') }}" href="{{ route('pasien') }}">Daftar Pasien</a>
             <a class="collapse-item {{ set_menu('pasien.tambah') }}" href="{{ route('pasien.tambah') }}">Tambah Pasien</a>
           </div>
@@ -85,15 +86,15 @@
         </a>
         <div id="collapseThree" class="collapse {{ set_show(['lab', 'lab.tambah', 'lab.edit']) }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            
+
             <a class="collapse-item {{ set_menu('lab') }}" href="{{ route('lab') }}">Daftar Fasilitas Lab</a>
             <a class="collapse-item {{ set_menu('lab.tambah') }}" href="{{ route('lab.tambah') }}">Tambah Fasilitas Lab</a>
           </div>
         </div>
       </li>
       @endif
-              <!-- Nav Item - Lab Collapse Menu -->
-      @if (Auth::user()->admin == 1 || Auth::user()->admin == 0)
+      <!-- Nav Item - Lab Collapse Menu -->
+      @if (Auth::user()->admin == 1 || Auth::user()->admin == 3)
       <li class="nav-item {{ set_menu(['obat', 'obat.tambah', 'obat.edit']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-prescription-bottle-alt"></i>
@@ -101,32 +102,32 @@
         </a>
         <div id="collapseFour" class="collapse {{ set_show(['obat', 'obat.tambah', 'obat.edit']) }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            
+
             <a class="collapse-item {{ set_menu('obat') }} " href="{{ route('obat') }}">Daftar Obat</a>
             <a class="collapse-item" {{ set_menu('obat.tambah') }} href="{{ route('obat.tambah') }}">Tambah Obat</a>
           </div>
         </div>
       </li>
       @endif
-        <!-- Nav Item - RM Collapse Menu -->
-        @if (Auth::user()->admin == 1 || Auth::user()->admin == 2)
-      <li class="nav-item {{ set_menu(['rm', 'rm.tambah', 'rm.edit','rm.list','rm.lihat','rm.tambah.id','tagihan']) }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFive" aria-expanded="true" aria-controls="collapseTwo">
+      <!-- Nav Item - RM Collapse Menu -->
+      @if (Auth::user()->admin == 1 || Auth::user()->admin == 0)
+      <li class="nav-item {{set_menu('dashboard')}}">
+        <a class="nav-link" href="{{route('rm.tambah')}}">
           <i class="fas fa-fw fa-file-signature"></i>
-          <span>Rekam Medis</span>
-        </a>
-        <div id="collapseFive" class="collapse {{ set_show(['rm', 'rm.tambah', 'rm.edit','rm.lihat','rm.tambah.id']) }}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item {{ set_menu(['rm']) }}" href="{{ route('rm') }}">Daftar RM</a>
-            <a class="collapse-item {{ set_menu(['rm.tambah','rm.tambah.id']) }}" href="{{ route('rm.tambah') }}">Tambah RM</a>       
-          </div>
-        </div>
+          <span>Rekam Medis</span></a>
+      </li>
+      @endif
+
+      @if (Auth::user()->admin == 1 || Auth::user()->admin == 3)
+      <li class="nav-item {{set_menu('dashboard')}}">
+        <a class="nav-link" href="{{route('rm')}}">
+          <i class="fas fa-fw fa-file-signature"></i>
+          <span>Tagihan</span></a>
       </li>
       @endif
 
       <!-- Divider -->
       <hr class="sidebar-divider">
-
       <!-- Heading -->
       <div class="sidebar-heading">
         Menu Tambahan
@@ -165,7 +166,7 @@
     </ul>
     <!-- End of Sidebar -->
 
-     <!-- Content Wrapper -->
+    <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
@@ -182,9 +183,10 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <label class="form-control bg-light border-0 small"  aria-label="Search" aria-describedby="basic-addon2" readonly><p class="text-center">{{get_setting('Slogan')}}</p>
-              <div class="input-group-append">
-              </div>
+              <label class="form-control bg-light border-0 small" aria-label="Search" aria-describedby="basic-addon2" readonly>
+                <p class="text-center">{{get_setting('Slogan')}}</p>
+                <div class="input-group-append">
+                </div>
             </div>
           </form>
 
@@ -211,34 +213,34 @@
               </div>
             </li>
 
-            
+
             @if (Auth::user()->admin === 1)
             <!-- Nav Item - Admin -->
             <li class="nav-item">
               <a class="nav-link" href="#" id="messagesDropdown" style="padding: 5px;">
                 <span class="badge badge-success">Admin</span>
               </a>
-            @endif
-                
-            <!-- Nav Item - Profesi -->
+              @endif
+
+              <!-- Nav Item - Profesi -->
             <li class="nav-item">
               <a class="nav-link" href="#" id="messagesDropdown" style="padding: 2px;">
                 <span class="badge badge-{{Auth::user()->profesi ? 'primary' :'warning'}}">{{Auth::user()->profesi}}</span>
-              </a>    
+              </a>
             </li>
-              
-             <!-- Nav Item - Alerts -->
+
+            <!-- Nav Item - Alerts -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                
-                
+
+
                 <!-- Counter - Alerts -->
                 <span class="badge badge-danger badge-counter">{{count(cek_stok_warning(10))}}</span>
-               
+
               </a>
-                @if ($notif=cek_stok_warning(10))
-                @if (count($notif) > 0)
+              @if ($notif=cek_stok_warning(10))
+              @if (count($notif) > 0)
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
@@ -255,12 +257,12 @@
                     <span class="font-weight-bold">{{$pesan}}</span>
                   </div>
                 </a>
-                    @endforeach
+                @endforeach
               </div>
-            @endif
-        @endif
-            </li> 
-                
+              @endif
+              @endif
+            </li>
+
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
@@ -276,15 +278,15 @@
                   Profil
                 </a>
                 @if (Auth::user()->admin == 1)
-                    <a class="dropdown-item" href="{{route('pengaturan')}}">
-                      <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Pengaturan
-                @endif
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
+                <a class="dropdown-item" href="{{route('pengaturan')}}">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Pengaturan
+                  @endif
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>
               </div>
             </li>
 
@@ -299,56 +301,56 @@
           <h1 class="h3 mb-2 text-gray-800">@yield('judul_halaman')</h1>
           <p class="mb-4">@yield('deskripsi_halaman')</p>
 
- <!-- Errors -->
+          <!-- Errors -->
 
-@if (count($errors) > 0)
-    @foreach ($errors->all() as $error)
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          @if (count($errors) > 0)
+          @foreach ($errors->all() as $error)
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <p class="mb-0">
-                {{ $error }}
+              {{ $error }}
             </p>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-    @endforeach
-@endif
-<!-- End of Errors -->
+          </div>
+          @endforeach
+          @endif
+          <!-- End of Errors -->
 
- <!-- Pesan Berhasil -->
-@if (session()->has('pesan'))
-     <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <!-- Pesan Berhasil -->
+          @if (session()->has('pesan'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
             <p class="mb-0">
-                {{ session()->get('pesan') }}
+              {{ session()->get('pesan') }}
             </p>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-@endif
- <!-- End of Pesan Berhasil-->
-  <!-- Pesan Warning -->
-@if (Route::is('dashboard'))
-@if (count($warning) > 0)
-@foreach ($warning as $id => $pesan)
-     <div  class="alert alert-warning alert-dismissible fade show" role="alert">
+          </div>
+          @endif
+          <!-- End of Pesan Berhasil-->
+          <!-- Pesan Warning -->
+          @if (Route::is('dashboard'))
+          @if (count($warning) > 0)
+          @foreach ($warning as $id => $pesan)
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <p class="mb-0"><a href="{{route('obat.edit',$id)}}" class="text-decoration-none text-dark">
                 {{ $pesan }}
-            </a>
-                
+              </a>
+
             </p>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true">&times;</span>
             </button>
-        </div>
-@endforeach
-@endif
-@endif
- <!-- End of Pesan warning-->
-        
-         <!-- DataTales Example -->
-             @yield('konten')
-            
+          </div>
+          @endforeach
+          @endif
+          @endif
+          <!-- End of Pesan warning-->
+
+          <!-- DataTales Example -->
+          @yield('konten')
+
 
         </div>
         <!-- /.container-fluid -->
@@ -389,8 +391,7 @@
         <div class="modal-body">Pilih "Logout" Jika anda ingin mengakhiri sesi anda.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
+          <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
             {{ __('Logout') }}
           </a>
@@ -412,12 +413,12 @@
   <script src="{{ URL::asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ URL::asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <!-- Page level custom scripts -->
   <script src="{{ URL::asset('js/demo/datatables-demo.js') }}"></script>
 
-    
+
 </body>
 
 </html>

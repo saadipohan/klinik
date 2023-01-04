@@ -62,7 +62,7 @@
                               </div>
                             </div>
                         
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="no_bpjs">No. BPJS</label>
                                 <input type="text" class="form-control " name="no_bpjs" value="{{$iden->no_bpjs}}" readonly>
@@ -71,7 +71,7 @@
                             <label for="no_handphone">No. Handphone</label>
                             <input type="text" class="form-control " name="no_handphone"  value="{{$iden->hp}}" readonly>
                           </div>
-                        </div>
+                        </div> -->
                     </form>
                     @endforeach
                 

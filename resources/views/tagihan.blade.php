@@ -36,7 +36,7 @@
                               </div>
                             </div>
                         
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
                                 <label for="no_bpjs">No. BPJS</label>
                                 <input type="text" class="form-control " name="no_bpjs" value="{{$iden->no_bpjs}}" readonly>
@@ -45,18 +45,18 @@
                             <label for="no_handphone">No. Handphone</label>
                             <input type="text" class="form-control " name="no_handphone"  value="{{$iden->hp}}" readonly>
                           </div>
-                        </div>
+                        </div> -->
                     </form>
                     @endforeach
                 
                 </div>
                 </div>
     </div>
-    <div id="print" class="card shadow mb-4">
+    <div class="card shadow mb-4">
                 <a href="#tambahrm" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="tambahrm">
                   <h6 class="m-0 font-weight-bold text-primary">Tagihan Kunjungan Pasien</h6></a>
                 <div class="collapse show" id="tambahrm">
-                    <div class="card-body">
+                    <div class="card-body" id='printMe'>
                         <div class="row mb-4">
                             <div class="col-sm-6">
                             @foreach ($idens as $iden)
@@ -66,7 +66,7 @@
                             </div>
                                 <div>Usia : {{hitung_usia($iden->tgl_lhr)}}</div>
                                 <div>Alamat : {{$iden->alamat}}</div>
-                                <div>No. Hp: {{$iden->hp}}</div>
+                                <!-- <div>No. Hp: {{$iden->hp}}</div> -->
                             @endforeach
                         </div>
         
@@ -115,7 +115,7 @@
                                     <span class="icon"><i class="fa  fa-arrow-left" ></i></span><span class="text"> Kembali</span></a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="javascript:;" data-toggle="modal" onclick="print()" data-target="#DeleteModal" class="btn btn-primary btn-block">
+                                    <a href="javascript:;" data-toggle="modal" onclick="printDiv('printMe')" data-target="#DeleteModal" class="btn btn-primary btn-block">
                                     <span class="icon"><i class="fa  fa-print" ></i></span><span class="text"> Cetak</span></a>
                                 </div>
 
@@ -132,10 +132,19 @@
     lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'Todos']]
   } )
 } );
-
-function print() {
-    $('#print').printThis();
-}
     </script>
+    <script>
+		function printDiv(divName){
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+
+			document.body.innerHTML = printContents;
+
+			window.print();
+
+			document.body.innerHTML = originalContents;
+
+		}
+	</script>
 
 @endsection

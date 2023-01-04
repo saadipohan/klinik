@@ -18,7 +18,7 @@
                 <div class="p-5">
                   <div class="text-center">
                   <img src="{{URL::asset('img/logo.png') }}" alt="" width="40%" style="margin-top: 10px;">
-                    <h1 class="h4 text-gray-900 mb-4">Puskesmas Berang Biji</h1>
+                    <h1 class="h4 text-gray-900 mb-4">Praktek dr. Eka Putu & dr. Timotius Munthe</h1>
                   </div>
 
                   <form class="user" method="POST" action="{{ route('login') }}">
