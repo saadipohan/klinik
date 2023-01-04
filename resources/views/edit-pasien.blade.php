@@ -68,38 +68,29 @@
                             <input type="text" class="form-control " name="tensi" placeholder="Tekanan Darah" value="{{ $data->tensi}}">
                           </div>
                           <div class="col-sm-6">
-                            <select class="form-control " name="Jenis_Kelamin" placeholder="Jenis Kelamin">
-                                <option value="" {{ $data->jk == '' ? 'selected' : '' }} disabled>Jenis Kelamin</option>
-                                <option value="Laki-laki"{{ $data->jk == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                                <option value="Perempuan"{{ $data->jk == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-
-                            </select>
-                          </div>
-                          <!-- <div class="col-sm-6">
                             <input type="text" class="form-control " name="no_handphone" placeholder="Nomer Handphone" value="{{ $data->hp}}">
-                          </div> -->
+                          </div>
                         </div>
                         <div class="form-group row">
-                          <!-- <div class="col-sm-6 mb-3 mb-sm-0">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
                             <select class="form-control " name="gol_darah" placeholder="Golongan Darah ''  }} disabled>Golongan Darah</option>
                                 <option value="A" {{ $data->gdarah == 'A' ? 'selected' : ''  }}>A</option>
                                 <option value="SD" {{ $data->gdarah == 'B' ? 'selected' : '' }}>B</option>
                                 <option value="SMP"{{ $data->gdarah == 'AB' ? 'selected' : '' }}>AB</option>
                                 <option value="SMA" {{ $data->gdarah == 'O' ? 'selected' : ''  }}>O</option>
                             </select>    
-                          </div> -->
+                          </div>
                           <div class="col-sm-6">
                             <select class="form-control " name="Jenis_Kelamin" placeholder="Jenis Kelamin">
                                 <option value="" {{ $data->jk == '' ? 'selected' : '' }} disabled>Jenis Kelamin</option>
                                 <option value="Laki-laki"{{ $data->jk == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
                                 <option value="Perempuan"{{ $data->jk == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-
                             </select>
                           </div>
                         </div>
-                            <!-- <div class="form-group">
+                            <div class="form-group">
                                 <input type="text" class="form-control " name="no_bpjs" placeholder="Nomer BPJS (Tidak Wajib)" value="{{ $data->no_bpjs}}" >
-                            </div> -->
+                            </div>
                             <div class="form-group">
                                 <input type="text" class="form-control " name="berat_badan" placeholder="Berat Badan" value="{{ $data->berat_badan}}" >
                             </div>
@@ -107,7 +98,6 @@
                                 <textarea class="form-control " name="alergi" placeholder="Daftar Alergi (Tidak Wajib)">{{ $data->alergi}}</textarea>
                             </div>                                
                         <div class="form-group row">
-
                             <div class="col-sm-3">
                                 <a href="{{route ('pasien')}}" class="btn btn-danger btn-block btn">
                                     <i class="fas fa-arrow-left fa-fw"></i> Kembali
@@ -141,7 +131,6 @@
          url = url.replace(':id', id);
          $("#deleteForm").attr('action', url);
      }
-
      function formSubmit()
      {
          $("#deleteForm").submit();

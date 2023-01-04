@@ -122,6 +122,8 @@
                                 <select id="profesi" type="text" class="form-control @error('profesi') is-invalid @enderror" name="profesi" required>
                                     <option value="Dokter" {{$user->profesi == "Dokter" ? 'selected':''}} >Dokter</option>
                                     <option value="Staff" {{$user->profesi == "Staff" ? 'selected':''}}>Staff</option>
+                                    <option value="Admin" {{$user->profesi == "Admin" ? 'selected':''}}>Admin</option>
+                                    <option value="Administrasi" {{$user->profesi == "Administrasi" ? 'selected':''}}>Administrasi</option>
                                     @error('profesi')
                                     <span class="invalid-feedback" role="alert"
                                     <strong>{{ $message }}</strong>

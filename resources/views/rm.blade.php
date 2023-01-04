@@ -42,7 +42,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Jejak Rekam Medis</h6>
                 </a>
                 <!-- Card Content - Collapse -->
-                <div class="collapse show" id="ListRM" style="">
+                <div class="collapse show" id="ListRM">
                   <div class="card-body">
                   
                    <div class="table-responsive">
@@ -98,18 +98,6 @@
                       @endif
                       </td>
                       <td width="120px">
-                        <a href="{{route('rm.edit', $rm->id)}}" class="btn btn-warning btn-sm btn-icon-split">
-                        <span class="icon">
-                        <i style="padding-top:4px"class="fas fa-pen"></i>
-                        </span>
-                        <span class="text">Edit</span>
-                        </a>
-                        <a href="{{route('rm.lihat', $rm->id)}}" class="btn btn-success btn-sm btn-icon-split">
-                        <span class="icon">
-                        <i style="padding-top:4px"class="fas fa-eye"></i>
-                        </span>
-                        <span class="text">Lihat</span>
-                        </a>
                         <a href="{{route('tagihan', $rm->id)}}" class="btn btn-secondary btn-sm btn-icon-split">
                         <span class="icon">
                         <i style="padding-top:4px"class="fas fa-cart-plus"></i>
@@ -179,7 +167,6 @@
          url = url.replace(':id', id);
          $("#deleteForm").attr('action', url);
      }
-
      function formSubmit()
      {
          $("#deleteForm").submit();

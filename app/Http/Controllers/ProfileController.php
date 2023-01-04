@@ -62,19 +62,24 @@ class ProfileController extends Controller
                 ]);
         }
         
-        
+        if ($data['profesi'] == 'Staff') {
+            $admin = 2;
+        }elseif ($data['profesi'] == 'Administrasi') {
+            $admin = 3;
+        }
+        else{
+            $admin = $data['admin'];
+        }
         User::find($data->id)->update([
             'name' => $data['name'],
             'email' => $data['email'],
             'username' => $data['username'],
             'profesi' => $data['profesi'],
-            
-            
         ]);
         
         if ($data['admin'] !== NULL) {
             User::find($data->id)->update([
-                'admin' => $data['admin'],
+                'admin' => $admin,
             ]);
         }
 

@@ -43,7 +43,10 @@ class PasienController extends Controller
             'Nama_Lengkap' => 'required|min:5|max:35',
             'Tanggal_Lahir' => 'required|before:today',
             'Alamat' => 'required',
+            'no_handphone' => 'required|numeric',
             'Jenis_Kelamin' => 'required',
+            'no_bpjs' => 'nullable|numeric|digits_between:1,15',
+            'gol_darah' => 'required',
         ]);
         DB::table('pasien')->insert([
             'nama' => $request->Nama_Lengkap,
@@ -84,6 +87,7 @@ class PasienController extends Controller
             'Nama_Lengkap' => 'required|min:5|max:35',
             'Tanggal_Lahir' => 'required|before:today',
             'Alamat' => 'required',
+            'no_handphone' => 'required|numeric',
             'Jenis_Kelamin' => 'required',
             'no_bpjs' => 'nullable|numeric|digits_between:1,15'
         ]);

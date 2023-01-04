@@ -94,7 +94,7 @@
       </li>
       @endif
       <!-- Nav Item - Lab Collapse Menu -->
-      @if (Auth::user()->admin == 1 || Auth::user()->admin == 3)
+      @if (Auth::user()->admin == 1 || Auth::user()->admin == 2)
       <li class="nav-item {{ set_menu(['obat', 'obat.tambah', 'obat.edit']) }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-prescription-bottle-alt"></i>
